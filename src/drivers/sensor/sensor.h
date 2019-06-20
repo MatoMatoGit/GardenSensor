@@ -14,6 +14,7 @@
 #define SENSOR_FILTER_DEPTH		25
 
 void SensorInit(void);
+void SensorDeinit(void);
 
 uint16_t SensorMoistureRead(void);
 uint16_t SensorTemperatureRead(void);

@@ -7,60 +7,78 @@
 
 #include "sensor.h"
 
-#include "oc_timer.h"
-#include "moisture.h"
 #include "filter.h"
-
 #include "SoftwareSerial.h"
 
-#if SENSOR_ENABLE_PERIODIC_READ==1
-static void OcTimerCallback(void);
-#else
-static void SensorReadCallback(uint32_t value);
-#endif
+#include "adc.h"
+#include "gpio_sensor.h"
 
-static FilterDataType_t moisture_filter_buf[SENSOR_FILTER_DEPTH];
+#include <util/delay.h>
 
-static Filter_t moisture_filter = {
+#define ADC_CH_MOISTURE_SENSOR 2
+#define ADC_CH_TEMPERATURE_SENSOR 0
+#define ADC_CH_LIGHT_SENSOR 1
+
+static uint16_t SensorRead(uint8_t adc_ch);
+
+static FilterDataType_t sensor_filter_buf[SENSOR_FILTER_DEPTH];
+
+static Filter_t sensor_filter = {
 	.n = SENSOR_FILTER_DEPTH,
-	.buffer = moisture_filter_buf
+	.buffer = sensor_filter_buf
 };
 
 void SensorInit(void)
 {
-	FilterInit(&moisture_filter);
-
-#if SENSOR_ENABLE_PERIODIC_READ==1
-	OcTimerInit(244);
-	OcTimerCallbackRegister(OcTimerCallback);
-	OcTimerStart();
-#endif
+	GpioSensorPowerInit();
+	GpioSensorMoistureInit();
+	GpioSensorTemperatureInit();
+	GpioSensorLightInit();
+	AdcInit();
 }
 
-uint32_t SensorValueGet(void)
+void SensorDeinit(void)
 {
-	uint32_t value = 0;
+	AdcDeinit();
+}
 
-#if SENSOR_ENABLE_PERIODIC_READ==0
-	MoistureSensorReadBurst(SENSOR_FILTER_DEPTH, SensorReadCallback);
-#endif
+uint16_t SensorMoistureRead(void)
+{
+	return SensorRead(ADC_CH_MOISTURE_SENSOR);
+}
 
-	FilterOut(&moisture_filter, &value);
-	
+uint16_t SensorTemperatureRead(void)
+{
+	return SensorRead(ADC_CH_TEMPERATURE_SENSOR);
+}
+
+uint16_t SensorLightRead(void)
+{
+	return SensorRead(ADC_CH_LIGHT_SENSOR);
+}
+
+static uint16_t SensorRead(uint8_t adc_ch)
+{
+	uint16_t value = 0;
+
+	/* Reset the filter. */
+	FilterInit(&sensor_filter);
+
+	/* Enable the sensor power and allow the power
+	 * to stabilize. */
+	GpioSensorPowerStateSet(1);
+	_delay_ms(25);
+
+	/* Read N samples to fill the filter. */
+	for(uint8_t i = 0; i < n; i++) {
+		FilterIn(&sensor_filter, AdcChannelRead(adc_ch));
+	}
+
+	/* Disable the sensor power. */
+	GpioSensorPowerStateSet(0);
+
+	/* Acquire the filter output. */
+	FilterOut(&sensor_filter, &value);
+
 	return value;
 }
-
-#if SENSOR_ENABLE_PERIODIC_READ==1
-static void OcTimerCallback(void)
-{
-	uint32_t value = MoistureSensorReadSingle();
-	FilterIn(&moisture_filter, value);
-	//softSerialPrintInt(value);
-	//softSerialPrintLn("");
-}
-#else
-static void SensorReadCallback(uint32_t value)
-{
-	FilterIn(&moisture_filter, value);
-}
-#endif
