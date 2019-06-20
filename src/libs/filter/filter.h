@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-typedef uint32_t FilterDataType_t;
+typedef uint16_t FilterDataType_t;
 
 typedef struct {
 	uint32_t n;
