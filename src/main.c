@@ -7,9 +7,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include "SoftwareSerial.h"
+//#include "SoftwareSerial.h"
 #include "sensor.h"
-#include "soft_timer.h"
 #include "garden_sensor_slave.h"
 
 #define SOFTSERIAL_TX_DDR	DDRB
@@ -26,15 +25,13 @@ static SensorStatus_e SensorStatus = SENSOR_STATUS_OK;
 int main(void)
 {
 	/* Initialize drivers. */
-	SoftTimerInit();
-	RgbLedInit();
 	SensorInit();
 	GardenSensorInit(GardenSensorRead, GardenSensorStatus);
 
 	//softSerialInit(&DDRB, &PORTB, NULL, SOFTWARE_SERIAL_RX_DISABLED, SOFTSERIAL_TX_PIN);
 	//softSerialBegin(2400);
 
-    while (1) 
+    while (1)
     {
 
     }
@@ -46,14 +43,16 @@ static uint16_t GardenSensorRead(SensorType_e type)
 
 	switch(type) {
 	case SENSOR_TYPE_MOISTURE:
-		sensor_value = SensorMoistureRead(void);
+		sensor_value = SensorMoistureRead();
 		break;
 	case SENSOR_TYPE_TEMP:
-		sensor_value = SensorTemperatureRead(void);
+		sensor_value = SensorTemperatureRead();
 		break;
 	case SENSOR_TYPE_LIGHT:
-		sensor_value = SensorLightRead(void);
+		sensor_value = SensorLightRead();
 		break;
+    default:
+        break;
 	}
 
 	return sensor_value;
