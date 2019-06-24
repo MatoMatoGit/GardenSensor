@@ -19,7 +19,7 @@
 
 void GpioSensorPowerInit(void)
 {
-	DDR_SENSOR |= (1 << PORT_SENSOR_PWR);
+	DDR_SENSOR |= (1 << PIN_SENSOR_PWR);
 }
 
 void GpioSensorMoistureInit(void)
