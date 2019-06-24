@@ -3,7 +3,7 @@
  *
  * Created: 16-03-2019 22:47:46
  *  Author: dorspi
- */ 
+ */
 
 #include "sensor.h"
 
@@ -70,7 +70,7 @@ static uint16_t SensorRead(uint8_t adc_ch)
 	_delay_ms(25);
 
 	/* Read N samples to fill the filter. */
-	for(uint8_t i = 0; i < n; i++) {
+	for(uint8_t i = 0; i < SENSOR_FILTER_DEPTH; i++) {
 		FilterIn(&sensor_filter, AdcChannelRead(adc_ch));
 	}
 
