@@ -1,0 +1,287 @@
+# depslib dependency file v1.0
+1561159581 source:/home/dorus/Development/GardenSensor/proj/fuse.c
+	<avr/io.h>
+
+1561159581 source:/home/dorus/Development/GardenSensor/proj/main.c
+	<avr/io.h>
+
+1552781210 source:/home/dorus/Development/GardenSensor/src/libs/filter/filter.c
+	"filter.h"
+	<stdlib.h>
+	<string.h>
+
+1561061121 /home/dorus/Development/GardenSensor/src/libs/filter/filter.h
+	<stdint.h>
+
+1557059868 source:/home/dorus/Development/GardenSensor/src/low_ware/adc.c
+	"adc.h"
+	<avr/io.h>
+
+1557059900 /home/dorus/Development/GardenSensor/src/low_ware/adc.h
+	<stdint.h>
+
+1558956460 source:/home/dorus/Development/GardenSensor/src/low_ware/gpio_rgb_led.c
+	"gpio_rgb_led.h"
+	<avr/io.h>
+
+1552780914 /home/dorus/Development/GardenSensor/src/low_ware/gpio_rgb_led.h
+	<stdint.h>
+
+1553357730 source:/home/dorus/Development/GardenSensor/src/drivers/rgbled/rgb_led.c
+	"rgb_led.h"
+	"gpio_rgb_led.h"
+	<stdlib.h>
+
+1552341340 /home/dorus/Development/GardenSensor/src/drivers/rgbled/rgb_led.h
+	<stdint.h>
+
+1557060566 source:/home/dorus/Development/GardenSensor/src/drivers/sleep/sleep.c
+	"sleep.h"
+	"wdt.h"
+	<avr/sleep.h>
+	<avr/power.h>
+	<stdlib.h>
+
+1557058268 /home/dorus/Development/GardenSensor/src/drivers/sleep/sleep.h
+	<stdint.h>
+
+1553468790 /home/dorus/Development/GardenSensor/src/low_ware/wdt.h
+
+1553440772 source:/home/dorus/Development/GardenSensor/src/drivers/soft_timer/soft_timer.c
+	"soft_timer.h"
+	"oc_timer.h"
+	<avr/interrupt.h>
+	<avr/io.h>
+	<string.h>
+
+1553440864 /home/dorus/Development/GardenSensor/src/drivers/soft_timer/soft_timer.h
+	<stdint.h>
+	<stdbool.h>
+
+1552780950 /home/dorus/Development/GardenSensor/src/low_ware/oc_timer.h
+	<stdint.h>
+
+1557058628 source:/home/dorus/Development/GardenSensor/src/low_ware/oc_timer.c
+	"oc_timer.h"
+	<stdlib.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+
+1557058666 source:/home/dorus/Development/GardenSensor/src/low_ware/wdt.c
+	"wdt.h"
+	<stdlib.h>
+	<stdint.h>
+	<avr/wdt.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+
+1561160017 source:/home/dorus/Development/GardenSensor/src/low_ware/gpio_sensor.c
+	"gpio_sensor.h"
+	<avr/io.h>
+
+1561160148 /home/dorus/Development/GardenSensor/src/low_ware/gpio_sensor.h
+	<stdint.h>
+
+1561160169 source:/home/dorus/Development/GardenSensor/src/drivers/sensor/sensor.c
+	"sensor.h"
+	"filter.h"
+	"SoftwareSerial.h"
+	"adc.h"
+	"gpio_sensor.h"
+	<util/delay.h>
+
+1561062854 /home/dorus/Development/GardenSensor/src/drivers/sensor/sensor.h
+	<stdint.h>
+
+1557057248 /home/dorus/Development/GardenSensor/src/drivers/soft_serial/SoftwareSerial.h
+	<inttypes.h>
+	<stddef.h>
+	<stdbool.h>
+
+1558392160 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/common/crc8.c
+	<inttypes.h>
+
+1556824074 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/common/ow_common.c
+	"ow_common.h"
+	"crc8.h"
+	<stdio.h>
+	<string.h>
+
+1559494844 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/common/ow_common.h
+	<stdint.h>
+	<stdlib.h>
+
+1560611263 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/common/crc8.h
+	<stdint.h>
+
+1556806002 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/common/utils.c
+	<inttypes.h>
+
+1556824018 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/master/ow_cmd_master.c
+	"ow_cmd_master.h"
+	"ow_ll_master.h"
+	<string.h>
+	<stdio.h>
+
+1556806002 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/master/ow_cmd_master.h
+	"ow_common.h"
+	"ow_hal_master.h"
+
+1559494844 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_common.h
+	<stdint.h>
+	<stdlib.h>
+
+1558270368 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/master/ow_hal_master.h
+	"ow_hal_io.h"
+	"ow_hal_general.h"
+
+1556806002 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_hal_io.h
+	"ow_hal_common.h"
+	<stdint.h>
+
+1556806002 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_hal_common.h
+
+1556823730 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_hal_general.h
+	<stdint.h>
+
+1556806002 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/master/ow_ll_master.h
+	"ow_hal_master.h"
+	"ow_common.h"
+	<stdint.h>
+
+1561304014 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/master/ow_ll_master.c
+	"ow_ll_master.h"
+	"ow_port_macro.h"
+	"crc8.h"
+	<string.h>
+
+1558270338 /home/dorus/Development/GardenSensor/src/drivers/OneWire/port/avr8/ow_port_macro.h
+	<util/delay.h>
+
+1560611263 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/crc8.h
+	<stdint.h>
+
+1556986456 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_general_avr8.c
+	"ow_port_general_avr8.h"
+	<util/delay.h>
+
+1558270180 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_general_avr8.h
+	"ow_hal_general.h"
+
+1559493706 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_int_avr8.c
+	"ow_port_int_avr8.h"
+	"ow_port_io_avr8.h"
+	<stdlib.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+
+1558274482 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_int_avr8.h
+	"ow_hal_int.h"
+
+1557148358 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_hal_int.h
+	"ow_hal_common.h"
+
+1556806002 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_avr8.h
+	"ow_hal_io.h"
+	<stdint.h>
+
+1560806052 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_avr8.c
+	"ow_port_io_avr8.h"
+	"ow_port_io_config_avr8.h"
+
+1557146996 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_config_avr8.h
+	<avr/io.h>
+
+1560802540 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_slave.c
+	"ow_port_slave.h"
+	"ow_port_io_avr8.h"
+	"ow_port_int_avr8.h"
+
+1556817092 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_slave.h
+	"ow_hal_slave.h"
+
+1560802659 /home/dorus/Development/GardenSensor/src/drivers/OneWire/slave/ow_hal_slave.h
+	"ow_hal_io.h"
+	"ow_hal_int.h"
+	"ow_hal_general.h"
+
+1557219744 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_tmr_avr8.c
+	"ow_port_tmr_avr8.h"
+	"oc_timer.h"
+	<stdint.h>
+
+1556816212 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_tmr_avr8.h
+	"ow_hal_tmr.h"
+
+1556824360 /home/dorus/Development/GardenSensor/src/drivers/OneWire/common/ow_hal_tmr.h
+	"ow_hal_common.h"
+	<stdint.h>
+
+1559496460 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/slave/ow_cmd_slave.c
+	"ow_cmd_slave.h"
+	"ow_ll_slave.h"
+	"crc8.h"
+	<string.h>
+
+1559493566 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/slave/ow_cmd_slave.h
+	"ow_common.h"
+	"ow_hal_slave.h"
+
+1560802659 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/slave/ow_hal_slave.h
+	"ow_hal_io.h"
+	"ow_hal_int.h"
+	"ow_hal_general.h"
+
+1557148348 /home/dorus/Development/ModuleBase/prg/drivers/OneWire/slave/ow_ll_slave.h
+	"ow_hal_slave.h"
+	"ow_hal_common.h"
+	"ow_common.h"
+
+1558390192 source:/home/dorus/Development/ModuleBase/prg/drivers/OneWire/slave/ow_ll_slave.c
+	"ow_ll_slave.h"
+	"ow_hal_slave.h"
+	"ow_port_macro.h"
+	<avr/io.h>
+
+1561375899 source:/home/dorus/Development/GardenSensor/src/drivers/soft_serial/SoftwareSerial.c
+	<avr/io.h>
+	<avr/interrupt.h>
+	<avr/pgmspace.h>
+	<string.h>
+	<stdlib.h>
+	<util/delay.h>
+	"SoftwareSerial.h"
+
+1561375274 source:/home/dorus/Development/ModuleBase/prg/drivers/GardenSensor/slave/garden_sensor_slave.c
+	<GardenSensor/slave/garden_sensor_slave.h>
+	<ow_common.h>
+	<OneWire/slave/ow_cmd_slave.h>
+	<OneWire/slave/ow_hal_slave.h>
+	<string.h>
+	<stdint.h>
+
+1560695182 /home/dorus/Development/GardenSensor/src/GardenSensor/slave/garden_sensor_slave.h
+	"garden_sensor_common.h"
+	<stdint.h>
+
+1561372793 /home/dorus/Development/GardenSensor/src/GardenSensor/common/garden_sensor_common.h
+
+1559493566 /home/dorus/Development/GardenSensor/src/OneWire/slave/ow_cmd_slave.h
+	"ow_common.h"
+	"ow_hal_slave.h"
+
+1560802659 /home/dorus/Development/GardenSensor/src/OneWire/slave/ow_hal_slave.h
+	"ow_hal_io.h"
+	"ow_hal_int.h"
+	"ow_hal_general.h"
+
+1561375969 source:/home/dorus/Development/GardenSensor/src/main.c
+	<stdint.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<avr/io.h>
+	<util/delay.h>
+	"sensor.h"
+	"garden_sensor_slave.h"
+

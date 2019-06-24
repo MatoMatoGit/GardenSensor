@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="GardenSensor" />
+		<Option pch_mode="2" />
+		<Option compiler="avr-gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/GardenSensor.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DF_CPU=8000000UL" />
+					<Add directory="../src" />
+					<Add directory="../src/low_ware" />
+					<Add directory="../src/libs/filter" />
+					<Add directory="../src/drivers/rgbled" />
+					<Add directory="../src/drivers/sensor" />
+					<Add directory="../src/drivers/soft_serial" />
+					<Add directory="../src/drivers/OneWire/slave" />
+					<Add directory="../src/drivers/OneWire/common" />
+					<Add directory="../src/drivers/OneWire/port/avr8" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/GardenSensor.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-Os" />
+				</Compiler>
+			</Target>
+			<Environment>
+				<Variable name="MCU" value="attiny85" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-mmcu=attiny85" />
+			<Add option="-DF_CPU=8000000UL" />
+		</Compiler>
+		<Linker>
+			<Add option="-mmcu=attiny85" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map,--cref" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lss" />
+			<Add after="avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hex" />
+			<Add after="avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).eep" />
+			<Add after="avr-objcopy --no-change-warnings -j .lock --change-section-lma .lock=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lock" />
+			<Add after="avr-objcopy --no-change-warnings -j .signature --change-section-lma .signature=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).sig" />
+			<Add after="avr-objcopy --no-change-warnings -j .fuse --change-section-lma .fuse=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse" />
+			<Add after="srec_cat $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse -Intel -crop 0x00 0x01 -offset  0x00 -O $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lfs -Intel " />
+			<Add after="srec_cat $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse -Intel -crop 0x01 0x02 -offset -0x01 -O $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hfs -Intel " />
+			<Add after="srec_cat $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse -Intel -crop 0x02 0x03 -offset -0x02 -O $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).efs -Intel " />
+		</ExtraCommands>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/crc8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/crc8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_cmd.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_common.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_common.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_hal_common.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_hal_general.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_hal_int.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_hal_io.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/ow_hal_tmr.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/common/utils.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/master/ow_cmd_master.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/master/ow_cmd_master.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/master/ow_hal_master.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/master/ow_ll_master.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/master/ow_ll_master.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_general_avr8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_general_avr8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_int_avr8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_int_avr8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_avr8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_avr8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_io_config_avr8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_macro.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_master.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_slave.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_slave.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_tmr_avr8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/port/avr8/ow_port_tmr_avr8.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/slave/ow_cmd_slave.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/slave/ow_cmd_slave.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/slave/ow_hal_slave.h" />
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/slave/ow_ll_slave.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../ModuleBase/prg/drivers/OneWire/slave/ow_ll_slave.h" />
+		<Unit filename="../src/drivers/rgbled/rgb_led.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/drivers/rgbled/rgb_led.h" />
+		<Unit filename="../src/drivers/sensor/sensor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/drivers/sensor/sensor.h" />
+		<Unit filename="../src/drivers/sleep/sleep.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/drivers/sleep/sleep.h" />
+		<Unit filename="../src/drivers/soft_serial/SoftwareSerial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/drivers/soft_serial/SoftwareSerial.h" />
+		<Unit filename="../src/drivers/soft_timer/soft_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/drivers/soft_timer/soft_timer.h" />
+		<Unit filename="../src/libs/filter/filter.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/libs/filter/filter.h" />
+		<Unit filename="../src/low_ware/adc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/low_ware/adc.h" />
+		<Unit filename="../src/low_ware/gpio_rgb_led.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/low_ware/gpio_rgb_led.h" />
+		<Unit filename="../src/low_ware/gpio_sensor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/low_ware/gpio_sensor.h" />
+		<Unit filename="../src/low_ware/oc_timer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/low_ware/oc_timer.h" />
+		<Unit filename="../src/low_ware/wdt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/low_ware/wdt.h" />
+		<Unit filename="../src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fuse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
